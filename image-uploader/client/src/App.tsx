@@ -1,43 +1,22 @@
 import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import './styles/app.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="container">
+    <div className="image-container">
+    <div className="image-header">
+    <h4>Upload your image</h4>
+    <p>File should be Jpeg, Png...</p>
+    </div>
+    <div className="image-body"></div>
+    <p className="image-divider">Or</p>
+    <div className="image-action">
+    <button className="btn bg-primary">Choose a File</button>
+    </div>
+    </div>
     </div>
   )
 }
