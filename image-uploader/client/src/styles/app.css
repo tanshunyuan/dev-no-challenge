@@ -14,6 +14,12 @@
   display: grid;
   align-items: center;
 }
+@media all and (min-width: 480px) {
+  .image-container {
+    width: 26rem;
+    height: 29rem;
+  }
+}
 .image-body {
   position: relative;
   border: 1px dashed #97bef4;
@@ -31,21 +37,4 @@
 #file-upload::-webkit-file-upload-button {
   visibility: hidden;
 }
-.btn {
-  border: none;
-  outline: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: white;
-  cursor: pointer;
-}
-.bg-primary {
-  background-color: #2f80ed;
-}
 
-@media all and (min-width: 480px) {
-  .image-container {
-    width: 26rem;
-    height: 29rem;
-  }
-}

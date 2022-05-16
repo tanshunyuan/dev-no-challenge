@@ -1,0 +1,30 @@
+.final-container {
+  width: 18rem;
+  height: 22rem;
+  border-radius: 0.75rem;
+  padding: 2rem 2.25rem;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: grid;
+  align-items: center;
+}
+
+.final-footer {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #f6f8fb;
+  border: 1px solid #e0e0e0;
+  justify-content: space-between;
+  padding-block: 2px;
+  padding-right: 2px;
+  padding-left:0.5rem;
+}
+
+@media all and (min-width: 480px) {
+  .final-container {
+    width: 26rem;
+    height: 29rem;
+  }
+}

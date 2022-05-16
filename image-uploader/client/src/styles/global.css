@@ -10,3 +10,15 @@ body{
   background-color:white;
 
 }
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+}
+.bg-primary {
+  background-color: #2f80ed;
+}

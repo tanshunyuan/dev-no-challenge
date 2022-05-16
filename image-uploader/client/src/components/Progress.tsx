@@ -1,5 +1,5 @@
 import "../styles/progress.css";
-export const ProgressBar = ({ width }: { width: string }) => {
+export const ProgressBar = () => {
   return (
     <div className="progress-container">
       <p>Uploading...</p>
