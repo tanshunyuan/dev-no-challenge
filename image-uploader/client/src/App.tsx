@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, useCallback } from "react";
 import Dropzone, { FileWithPath, useDropzone } from "react-dropzone";
+import { ProgressBar } from "./components/progress";
+
 import "./styles/app.css";
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
 
   return (
     <div className="container">
+      <ProgressBar />
       <div className="image-container">
         <div className="image-header">
           <h4>Upload your image</h4>
