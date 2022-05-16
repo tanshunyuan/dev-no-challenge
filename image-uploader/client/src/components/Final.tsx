@@ -4,6 +4,10 @@ interface Resource {
   alt: string;
   url: string;
 }
+
+// TODO
+// Error handling if image not uploaded successfully
+// Error handling for wrong image type
 export const Final = ({ alt, url }: Resource) => {
   const [isCopied, setIsCopied] = useState(false);
   const copyOnClick = (url: string) => {
