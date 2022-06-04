@@ -1,16 +1,20 @@
-import React, { useState, ChangeEvent, useCallback } from "react";
-import Dropzone, { FileWithPath, useDropzone } from "react-dropzone";
+import { useState, ChangeEvent, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 import { Final } from "./components/Final";
 import { ProgressBar } from "./components/Progress";
 
 import "./styles/app.css";
 
 function App() {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     uploadImage(acceptedFiles[0]);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     maxFiles: 1,
   });
@@ -21,35 +25,46 @@ function App() {
       uploadImage(file);
     }
   };
-  const uploadImage = (imageFile: File) => {
-    console.log(imageFile);
+  const uploadImage = async (imageFile: File) => {
+    startLoading();
+    const result = await fetch("/upload", {
+      method: "POST",
+      body: imageFile,
+    }).then((res) => {
+      stopLoading();
+      return res.json();
+    });
+    setImage(result.imageUrl);
   };
-
+  if (image !== null) return <Final alt="something" url={image} />;
   return (
-    <div className="container">
-      <Final alt="something" url="https://something.com"/>
-      <div className="image-container">
-        <div className="image-header">
-          <h4>Upload your image</h4>
-          <p>File should be Jpeg, Png...</p>
+    <>
+      {!loading ? (
+        <div className="image-container">
+          <div className="image-header">
+            <h4>Upload your image</h4>
+            <p>File should be Jpeg, Png...</p>
+          </div>
+          <div {...getRootProps({ className: "image-body" })}>
+            <input {...getInputProps()} />
+            <p>Drag and drop your image here</p>
+          </div>
+          <p className="image-divider">Or</p>
+          <div className="image-action">
+            <input
+              type="file"
+              className="btn bg-primary"
+              id="file-upload"
+              name="img"
+              accept="image/*"
+              onChange={handleImage}
+            />
+          </div>
         </div>
-        <div {...getRootProps({ className: "image-body" })}>
-          <input {...getInputProps()} />
-          <p>Drag and drop your image here</p>
-        </div>
-        <p className="image-divider">Or</p>
-        <div className="image-action">
-          <input
-            type="file"
-            className="btn bg-primary"
-            id="file-upload"
-            name="img"
-            accept="image/*"
-            onChange={handleImage}
-          />
-        </div>
-      </div>
-    </div>
+      ) : (
+        <ProgressBar />
+      )}
+    </>
   );
 }
 

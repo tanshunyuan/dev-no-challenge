@@ -6,13 +6,18 @@
 
 .image-container {
   width: 18rem;
-  height: 22rem;
   border-radius: 0.75rem;
   padding: 2rem 2.25rem;
   text-align: center;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   display: grid;
   align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  grid-gap: 0.5rem;
+}
+
+.image-action {
+  display: flex;
 }
 @media all and (min-width: 480px) {
   .image-container {
@@ -25,16 +30,15 @@
   border: 1px dashed #97bef4;
   border-radius: 0.75rem;
   height: 14rem;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #file-upload {
-  content: 'Choose a file';
+  content: "Choose a file";
 }
 #file-upload::-webkit-file-upload-button {
   visibility: hidden;
 }
-
