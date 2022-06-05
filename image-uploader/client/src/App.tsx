@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useCallback } from "react";
+import { useState, ChangeEvent, useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import { Final } from "./components/Final";
 import { ProgressBar } from "./components/Progress";
@@ -8,6 +8,7 @@ import "./styles/app.css";
 function App() {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const imgRef = useRef<HTMLInputElement>(null);
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
 
@@ -51,13 +52,20 @@ function App() {
           </div>
           <p className="image-divider">Or</p>
           <div className="image-action">
+            <button
+              onClick={() => imgRef.current && imgRef.current.click()}
+              className="btn bg-primary"
+            >
+              Choose a file
+            </button>
             <input
+              onChange={handleImage}
+              ref={imgRef}
               type="file"
               className="btn bg-primary"
               id="file-upload"
               name="img"
               accept="image/*"
-              onChange={handleImage}
             />
           </div>
         </div>

@@ -1,9 +1,3 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .image-container {
   width: 18rem;
   border-radius: 0.75rem;
@@ -16,9 +10,6 @@
   grid-gap: 0.5rem;
 }
 
-.image-action {
-  display: flex;
-}
 @media all and (min-width: 480px) {
   .image-container {
     width: 26rem;
@@ -36,9 +27,6 @@
   cursor: pointer;
 }
 
-#file-upload {
-  content: "Choose a file";
-}
-#file-upload::-webkit-file-upload-button {
-  visibility: hidden;
+#file-upload{
+  display:none
 }
