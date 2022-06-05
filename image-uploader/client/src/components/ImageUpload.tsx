@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "../styles/app.css";
+import axios from "axios";
 
 interface ImageUploadArgs {
   setLoading: (args: boolean) => void;
@@ -29,18 +30,22 @@ export const ImageUpload = ({ setLoading, setImage }: ImageUploadArgs) => {
 
   const uploadImage = async (imageFile: File) => {
     startLoading();
-    const url = `https://freeimage.host/api/1/upload?key=${
-      import.meta.env.VITE_FREEIMAGEHOST
-    }`;
-    const result = await fetch(url, {
-      method: "POST",
-      mode: "cors",
-      body: imageFile,
-    }).then((res) => {
-      stopLoading();
-      return res.json();
-    });
-    setImage(result.imageUrl);
+    const url = `http://localhost:3001/upload`;
+    const result = await axios
+      .post(
+        url,
+        { imageFile },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        stopLoading();
+        return res.data;
+      });
+    setImage(result);
   };
   return (
     <>
