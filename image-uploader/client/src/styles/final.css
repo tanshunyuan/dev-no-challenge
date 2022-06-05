@@ -1,14 +1,3 @@
-.final-container {
-  width: 18rem;
-  height: 22rem;
-  border-radius: 0.75rem;
-  padding: 2rem 2.25rem;
-  text-align: center;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  display: grid;
-  align-items: center;
-}
-
 .final-footer {
   display: flex;
   white-space: nowrap;
@@ -22,21 +11,16 @@
   padding-left: 0.5rem;
 }
 
-.final-body {
-  height: 14rem;
-  width: 21rem;
+.final-footer p{
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .final-body img {
   object-fit: cover;
   border-radius: 0.75rem;
-  width: 100%;
-  height: 100%;
+  max-height: 14rem;
+  width:21rem;
+  height: auto;
 }
 
-@media all and (min-width: 480px) {
-  .final-container {
-    width: 26rem;
-    height: 29rem;
-  }
-}

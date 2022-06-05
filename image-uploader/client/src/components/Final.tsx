@@ -16,7 +16,7 @@ export const Final = ({ alt, url }: Resource) => {
     setTimeout(() => setIsCopied(false), 2000);
   };
   return (
-    <div className="final-container">
+    <div className="container">
       <div className="final-header">
         <h3>Uploaded Successfully!</h3>
       </div>

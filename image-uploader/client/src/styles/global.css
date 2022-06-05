@@ -8,8 +8,25 @@ html {
 
 body {
   background-color: white;
-  display:grid;
+  display: grid;
   place-content: center;
+}
+
+.container {
+  border-radius: 0.75rem;
+  padding: 2rem 2.25rem;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  grid-gap: 0.5rem;
+}
+@media all and (min-width: 480px) {
+  .container {
+    width: 26rem;
+    height: 29rem;
+  }
 }
 
 .btn {

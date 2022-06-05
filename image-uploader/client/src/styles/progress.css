@@ -7,11 +7,16 @@
   margin-bottom: 1.5rem;
 }
 .progress-bar {
-  width: 21.25rem;
+  width: 15rem;
   height: 0.375rem;
   background: #f2f2f2;
   border-radius: 0.5rem;
   position: relative;
+}
+@media all and (min-width: 480px) {
+  .progress-bar {
+    width: 21.25rem;
+  }
 }
 .inner-bar {
   position: absolute;
