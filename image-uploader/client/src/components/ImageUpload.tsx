@@ -29,8 +29,12 @@ export const ImageUpload = ({ setLoading, setImage }: ImageUploadArgs) => {
 
   const uploadImage = async (imageFile: File) => {
     startLoading();
-    const result = await fetch("/upload", {
+    const url = `https://freeimage.host/api/1/upload?key=${
+      import.meta.env.VITE_FREEIMAGEHOST
+    }`;
+    const result = await fetch(url, {
       method: "POST",
+      mode: "cors",
       body: imageFile,
     }).then((res) => {
       stopLoading();
