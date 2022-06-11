@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import "../styles/app.css";
 import axios from "axios";
@@ -30,7 +30,7 @@ export const ImageUpload = ({ setLoading, setImage }: ImageUploadArgs) => {
 
   const uploadImage = async (imageFile: File) => {
     startLoading();
-    const url = `http://localhost:3001/upload`;
+    const url = `${import.meta.env.VITE_BACKEND_BASE_URL}/upload`;
     const result = await axios
       .post(
         url,
@@ -45,7 +45,7 @@ export const ImageUpload = ({ setLoading, setImage }: ImageUploadArgs) => {
         stopLoading();
         return res.data;
       });
-    setImage(result);
+    setImage(result.message.url);
   };
   return (
     <>

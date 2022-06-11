@@ -16,28 +16,25 @@ app.use(express.json());
 app.use(cors())
 
 app.post("/upload", uploadFile, async (req, res) => {
-  console.log(req)
   const file = req.file;
   const imagekit = new ImageKit({
     publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
     privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
     urlEndpoint: process.env.IMAGEKIT_ENDPOINT,
   });
-  console.log(file);
-  const result = await imagekit
+  let result;
+  try {
+  result = await imagekit
     .upload({
       file: file.buffer,
       fileName: file.originalname,
     })
-    .then((response) => {
-      console.log("RESPONSE ==> ", response);
-      return response;
-    })
-    .catch((err) => {
-      console.log("ERROR => ", err);
-      return err;
-    });
-  res.status(200).send(result.url);
+  res.status(200).send({message: result, error:null});
+
+  }catch(error){
+  res.status(500).send({message: 'Something went wrong', error});
+
+  }
 });
 
 app.listen(port, () => {
